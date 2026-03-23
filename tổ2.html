@@ -1,0 +1,533 @@
+    <!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fdf8f2;
+    color: #333;
+    line-height: 1.6;
+}
+
+        header {
+    background-color: #7c5e3c;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+        header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+        nav {
+    background-color: #a07855;
+    padding: 10px;
+    text-align: center;
+}
+
+        nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    font-weight: bold;
+}
+
+        nav a:hover {
+    background-color: #f5e6d3;
+    color: #5a3e2b;
+    border-radius: 5px;
+}
+
+        .container {
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+        h2,h3 {
+    text-align: center;
+    color: #6b4f3b;
+}
+
+/* Định dạng bảng danh sách học sinh */
+        table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+}
+
+        table,th,td {
+    border: 1px solid #ccc;
+}
+
+        th {
+    background-color: #7c5e3c;
+    color: white;
+    padding: 10px;
+}
+
+        td {
+    padding: 10px;
+    text-align: center;
+}
+
+        tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Phần danh sách lớp với ảnh chân dung */
+        .class-list {
+    padding: 40px 20px;
+    color: rgb(3, 3, 3);
+    text-align: center;
+}
+
+        .class-list h3 {
+    color: #000000;
+    margin-bottom: 40px;
+    font-size: 1.8em;
+}
+
+/* Cô chủ nhiệm - căn giữa */
+        .head-teacher {
+    margin-bottom: 50px;
+}
+
+        .head-teacher .teacher-item {
+    display: inline-block;
+}
+
+/* Grid học sinh - responsive */
+        .student-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+        .teacher-item,.student-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+        .teacher-item img,.student-item img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+       .name {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Gallery kỷ niệm - responsive */
+       .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+       .gallery img {
+    width: 100%;
+    height: auto;
+    border: 3px solid #2c3e50;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+       .gallery p {
+    text-align: center;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+       .video-container {
+    text-align: center;
+    margin: 30px 0;
+}
+
+       .video-container iframe {
+    width: 100%;
+    max-width: 800px;
+    height: 450px;
+    border-radius: 10px;
+}
+
+       form {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+       label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+       input[type="text"],
+       input[type="email"],
+       textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+       input[type="submit"] {
+    background-color: #a07855;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+       input[type="submit"]:hover {
+    background-color: #8b5e3c;
+}
+
+       footer {
+    background-color: #7c5e3c;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+/* Responsive cho mobile */
+      @media (max-width: 768px) {
+      .student-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 30px;
+    }
+
+      .teacher-item img,.student-item img {
+        width: 120px;
+        height: 120px;
+    }
+
+      .video-container iframe {
+        height: 300px;
+    }
+}        
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Lớp Học 12A1 - Trường THPT </h1>
+    </header>
+
+    <nav>
+        <a href="#trangchu">Trang chủ</a>
+        <a href="#gioithieu">Giới thiệu</a>
+        <a href="#danhsach">Danh sách HS</a>
+        <a href="#kyniem">Báo Tường </a>
+        <a href="#lienhe">Liên hệ</a>
+    </nav>
+
+    <div class="container" id="trangchu">
+
+        <h2>Chào mừng đến với website của tổ 2 lớp 12A1</h2>
+        <p style="text-align: center;">
+            Đây là website báo tường giới thiệu về hoạt động kỉ niệm ngày 26/3.
+            Nơi lưu giữ những kỷ niệm đẹp và chia sẻ thông tin về hoạt động của nhà trường.
+        </p>
+
+        <div id="gioithieu">
+            <h3>Ngày 26/3 </h3>
+            <p>Ngày 2/3 là Ngày thành lập Đoàn Thanh Niên Cộng sản Hồ Chí Minh(26/03/1931),kỷ niệm tổ cức chính trị-xã hội cua thanh niên Việt Nam do Đảng Cộng sản Việt Nam và Chủ tịch Hồ Chí Minh sáng Lập rèn luyện.Đây là diẹp tôn vin vai trò xung kích,tình nguyện của thế hệ trẻ trong sự nghiệp xây dựng bảo vệ tổ quốc
+            
+            </p>
+        </div>
+
+        <!-- Bảng danh sách học sinh -->
+        <div id="danhsach">
+            <h3>Danh sách học sinh tổ 2 lớp 12A1</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Họ và tên</th>
+                        <th>Ngày sinh</th>
+                        <th>Giới tính</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Lê Thành Trung</td>
+                        <td>23/11/2008</td>
+                        <td>Nam</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Nguyễn Hữu Khánh</td>
+                        <td>28/11/2008</td>
+                        <td>Nam</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Vũ Đình Hùng</td>
+                        <td>09/02/2008</td>
+                        <td>Nam</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Vũ Thị Diệu Linh</td>
+                        <td>08/06/2008</td>
+                        <td>Nữ</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Nguyễn Phú Quang</td>
+                        <td>12/12/2008</td>
+                        <td>Nam</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Trần Duy Khánh</td>
+                        <td>06/09/2008</td>
+                        <td>Nam</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Nguyễn Trung Đức</td>
+                        <td>27/11/2008</td>
+                        <td>Nam</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Nguyễn Ngọc Diệp</td>
+                        <td>17/2/2008</td>
+                        <td>Nữ</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>Nguyễn Huy Minh</td>
+                        <td>31/3/2008</td>
+                        <td>Nam</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Nguyễn Quỳnh Giang</td>
+                        <td>09/06/2008</td>
+                        <td>Nữ</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>Nguyễn Như Hà Phương</td>
+                        <td>06/08/2008</td>
+                        <td>Nữ</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>Đoàn Anh Thư</td>
+                        <td>27/7/2008</td>
+                        <td>Nữ</td>
+                    </tr>
+
+
+                    <!-- Thêm nhiều hơn nếu cần -->
+                </tbody>
+            </table>
+            <p style="text-align: center;"><em>(Danh sách Tổ 2)</em></p>
+        </div>
+
+        <div class="class-list">
+            <h3>Danh Sách Tổ 2 Lớp 12A1</h3>
+
+            <!-- Cô chủ nhiệm -->
+            <div class="head-teacher">
+                <div class="teacher-item">
+                    <img src="https://sf-static.upanhlaylink.com/img/image_20260322f3adffe3cbc38fa924a33d6057c6044e.jpg" alt="le.jpg">
+                    <div class="name">Gv.Lê Thị Cẩm Lệ</div>
+                    <div class="name">(Chủ nhiệm lớp 12A1)</div>
+                </div>
+            </div>
+
+            <!-- Học sinh -->
+            <div class="student-grid">
+                <div class="student-item">
+                    <img src="https://sf-static.upanhlaylink.com/img/image_202603225fa33ccb2079f42cfcc153f8f8a4aedd.jpg" alt="trung.jpg">
+                    <div class="name">Lê Thành Trung</div>
+                </div>
+                <div class="student-item">
+                    <img src="https://sf-static.upanhlaylink.com/img/image_2026032213dc79fcca9ca4d288d51c353fff4a47.jpg" alt="khanh.jpg">
+                    <div class="name">Nguyễn Hữu Khánh</div>
+                </div>
+                <div class="student-item">
+                    <img src="https://sf-static.upanhlaylink.com/img/image_20260322dd70dfe7894dddc2ee478ff712d96e8c.jpg" alt="quang.jpg">
+                    <div class="name">Nguyễn Phú Quang</div>
+                </div>
+                <div class="student-item">
+                    <img src="https://sf-static.upanhlaylink.com/img/image_2026032221bfc8a62d091b7897ebe197e22fabcb.jpg" alt="duc.jpg">
+                    <div class="name">Nguyễn Trung Đức </div>
+                </div>
+                <div class="student-item">
+                    <img src="https://sf-static.upanhlaylink.com/img/image_20260322285f0730517473c459d7c18323bdec34.jpg" alt="khanh1.jpg">
+                    <div class="name">Trần Duy Khánh</div>
+                </div>
+                <div class="student-item">
+                    <img src="https://sf-static.upanhlaylink.com/img/image_202603228b3847084b4eaefe8f994f16145443db.jpg" alt="thu.jpg">
+                    <div class="name">Đoàn Anh Thư</div>
+                </div>
+                <div class="student-item">
+                    <img src="https://sf-static.upanhlaylink.com/img/image_20260322fb73053cd4e00c13ce10a49c2f82d207.jpg" alt="linh.jpg">
+                    <div class="name">Vũ Thị Diệu Linh</div>
+                </div>
+                <div class="student-item">
+                    <img src="https://sf-static.upanhlaylink.com/img/image_2026032261fef84a39d2a6ecc0e4cfb0c0e21630.jpg" alt="minh.jpg">
+                    <div class="name">Nguyễn Huy Minh</div>
+                </div>
+                    <div class="student-item">
+                        <img src="https://sf-static.upanhlaylink.com/img/image_202603221ad6c6f61052ec7aea0f8fb8ca4f88c1.jpg" alt="giang.jpg">
+                        <div class="name"> Nguyễn Quỳnh Giang</div>
+                    </div>
+                        <div class="student-item">
+                            <img src="https://sf-static.upanhlaylink.com/img/image_20260322e68ff9819ffb8eb4226903c743747bda.jpg" alt="phuong.jpg">
+                            <div class="name">Nguyễn Như Hà Phương</div>
+                        </div>
+                        <div class="student-item">
+                            <img src="https://sf-static.upanhlaylink.com/img/image_20260322dd1698858614e080d336d425a44ab3fd.jpg" alt="hung.jpg">
+                            <div class="name">Vũ Đình Hùng</div>
+                        </div>
+                        <div class="student-item">
+                            <img src="https://sf-static.upanhlaylink.com/img/image_202603229483972bb7f3f8eb1e7629f8b83fb6de.jpg" alt="diep.jpg">
+                            <div class="name">Nguyễn Ngọc Diệp</div>
+                        </div>
+
+            
+            </div>
+            <p style="margin-top: 30px; font-style: italic;">(Ảnh chân dung các thành viên tổ 2)</p>
+        </div>
+
+        <!-- Album kỷ niệm -->
+        <div id="kyniem">
+            <h3>HOẠT ĐỘNG KỈ NIỆM NGÀY 26/3</h3>
+            <p>
+                Dưới đây là một số hình ảnh kỷ niệm đẹp của của nhà trường về hoạt động thể thao ngày 26/3.
+            </p>
+
+            <div class="gallery">
+                <div>
+                    <img src="https://sf-static.upanhlaylink.com/img/image_202603226dd2991a9d92ece2cb3523584d7e836b.jpg" alt="khaimac.jpg">
+                    <p>Ngày Khai Mạc Hoạt Động Thể Thao</p>
+                </div>
+                <div>
+                    <img src="https://sf-static.upanhlaylink.com/img/image_202603220d8af54bef5876907ff31c021ac88622.jpg" alt="chuyen1.jpg">
+                    <p>Trận Đấu Bóng Chuyền</p>
+                </div>
+                <div>
+                    <img src="https://sf-static.upanhlaylink.com/img/image_20260322f8b82bb5ce4890445a76de4a4f402b24.jpg" alt="bongnu1.jpg">
+                    <p>Trận Đấu Bóng Đá Nữ</p>
+                </div>
+                <div>
+                    <img src="https://sf-static.upanhlaylink.com/img/image_20260322835d149b1a082a7c8e78755eebf5634c.jpg" alt="van.jpg">
+                    <p>Hoạt động ngoại khóa văn nghệ</p>
+                </div>
+                <div>
+                    <img src="https://sf-static.upanhlaylink.com/img/image_2026032222a887d0c404f1faff700d6514794695.jpg" alt="a1.jpg">
+                    <p>LỚP 12A1 VÔ ĐỊCH GIẢI BÓNG ĐÁ NAM CẤP TRƯỜNG</p>
+                </div>
+                <div>
+                    <img src="https://sf-static.upanhlaylink.com/img/image_2026032258ca6b4fcd7c8a02e4364921bab985d5.jpg" alt="nhay.jpg">
+                    <p> Các VDV Tham Gia Nội Dung Nhảy Cao Nữ</p>
+                </div>
+                <div>
+                    <img src="https://sf-static.upanhlaylink.com/img/image_2026032227dc258984684ae4b19ab2198c5949ca.jpg" alt="chay.jpg">
+                    <p>Nội Dung Chạy 800m Nam</p>
+                </div>
+                <div>
+                    <img src="https://sf-static.upanhlaylink.com/img/image_20260322685563b24215f5948edb22c732d8df25.jpg" alt="a11.jpg">
+                    <p> Trận Đấu Bán Kết Giữa Lớp 12A1 Và 12A5</p>
+                </div>
+                <div>
+                    <img src="https://sf-static.upanhlaylink.com/img/image_2026032206434f517ec2e47acbb45fcc66e33572.jpg" alt="giai.jpg">
+                    <p> Trao Giải Bế Mạc Các Hoạt Động</p>
+                </div>
+            </div>
+
+            <!-- Video -->
+            <div class="video-container">
+                <h3>Video Tình Huống Phối Hợp Nhịp Nhàng Của Các Cầu Thủ 12A1</h3>
+                <iframe 
+                    src="https://streamable.com/e/lzle90" 
+                    width="640" 
+                    height="360" 
+                    frameborder="0" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+        <!-- Liên hệ -->
+        <div id="lienhe">
+            <h2>Liên hệ - Gửi góp ý</h2>
+            <p> <small> "Tuổi trẻ không chỉ là thanh xuâ,mà còn là cống.'Khát vọng xanh' xin gửi gắm niềm tin và nhiệt huyết của tuổi trẻ trường...trong hành trình xây dựng quê hương.hãy để mỗi dòng viết là một dấu ẩn,mỗi bức tranh là một hoài bão chào mừng ngày hội lớn 26/3!"</small></p>
+            <form id="contactForm">
+                <label for="hoten">Họ và tên:</label>
+                <input type="text" id="hoten" name="hoten" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="gopy">Nội dung góp ý:</label>
+                <textarea id="gopy" name="gopy" rows="5" required></textarea>
+
+                <input type="submit" value="Gửi góp ý">
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 - Thiết kế bởi tổ 2 - Lớp 12A1</p>
+        <p>Website báo tường thực hành môn Tin học THPT</p>
+    </footer>
+
+    <script>
+        const form = document.getElementById('contactForm');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            alert('Cảm ơn bạn đã gửi góp ý!\nChúng tôi sẽ phản hồi trong thời gian sớm nhất.');
+            form.reset();
+        });
+    </script>
+
+</body>
+
+</html>
